@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Digiflexa — Solutions digitales rapides et accessibles</title>
+  <meta name="description" content="Digiflexa : création de sites web, applications, marketing digital, automatisation WhatsApp, support client.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary:#6c5ce7; --dark:#0f172a; --light:#f8fafc; }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans","Helvetica Neue",Arial,sans-serif;color:var(--dark);background:#fff}
+    .navbar-brand b{letter-spacing:.5px}
+    .hero{background: radial-gradient(900px 400px at 20% 10%, rgba(108,92,231,.25), transparent), linear-gradient(180deg,#ffffff 0%, #f5f7ff 100%);}
+    .hero .badge{background:rgba(108,92,231,.12);color:var(--primary)}
+    .section-title{font-weight:800;letter-spacing:-.5px}
+    .card{border-radius:1rem}
+    .icon-circle{width:3rem;height:3rem;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:rgba(108,92,231,.12);color:var(--primary)}
+    .pricing-toggle{display:flex;align-items:center;gap:.5rem;justify-content:center}
+    .price{font-size:2.2rem;font-weight:800}
+    .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:1000}
+    footer a{text-decoration:none}
+    /* Petites améliorations responsives */
+    @media (max-width: 576px){
+      .price{font-size:1.9rem}
+    }
+  </style>
+  <!--
+  =============================================================
+  DIGIFLEXA — GUIDE COMPLET (Lisez-moi)
+  =============================================================
+
+  OBJECTIF : vous donner 1 seul fichier prêt à coller (index.html)
+  + toutes les explications pour que ça marche tout de suite, sans backend.
+
+  0) PRÉ-REQUIS
+     - Avoir Visual Studio Code (VS Code) installé.
+
+  1) CRÉER LE PROJET
+     - Créez un dossier sur votre ordinateur :  par ex. "digiflexa".
+     - Ouvrez VS Code > Fichier > Ouvrir un dossier… > choisissez ce dossier.
+     - Dans VS Code, créez un nouveau fichier nommé : index.html
+     - Copiez TOUT le contenu de ce document puis COLLEZ dans index.html
+     - Enregistrez (Ctrl+S).
+
+  2) OUVRIR LE SITE
+     - Option A (simple) : Double-cliquez sur le fichier index.html pour l'ouvrir dans votre navigateur.
+     - Option B (recommandée) : Installez l'extension "Live Server" dans VS Code, puis clic droit sur index.html > "Open with Live Server" (le navigateur se mettra à jour automatiquement à chaque sauvegarde).
+
+  3) PERSONNALISER LES INFOS (IMPORTANT)
+     Tout en bas du fichier, dans <script>, MODIFIEZ les constantes ci-dessous :
+       const WHATSAPP_NUMBER = '22900000000';      // Remplacez par votre numéro WhatsApp au format international (ex: 229XXXXXXXXX)
+       const FACEBOOK_URL = 'https://facebook.com/votrepage';
+       const EMAIL = 'contact@votre-email.com';
+     Ces valeurs mettront à jour automatiquement les boutons et liens.
+
+     IMAGES / LOGO :
+       - Par défaut, le texte "Digiflexa" s'affiche comme logo.
+       - Pour utiliser une image de logo : cherchez le commentaire "LOGO (OPTIONNEL)" ci-dessous
+         et remplacez <span class="...">Digiflexa</span> par <img src="logo.png" alt="Digiflexa" height="28">.
+         Placez votre fichier logo.png à côté de index.html.
+
+  4) DÉPLOYER GRATUITEMENT EN LIGNE (GitHub Pages)
+     a. Créez un compte GitHub si besoin, puis un nouveau dépôt nommé "digiflexa".
+     b. Dans VS Code : Terminal > Nouveau terminal, puis exécutez exactement ces commandes :
+
+        git init
+        git add index.html
+        git commit -m "Site Digiflexa — première version"
+        git branch -M main
+        git remote add origin https://github.com/VOTRE-UTILISATEUR/digiflexa.git
+        git push -u origin main
+
+     c. Sur GitHub : allez dans le dépôt > Settings (Paramètres) > Pages.
+        - Build and deployment > Source : "Deploy from a branch"
+        - Branch : main / (root)
+        - Cliquez sur Save. Patientez 1–2 minutes : votre site sera accessible à l'adresse
+          https://VOTRE-UTILISATEUR.github.io/digiflexa/
+
+  5) MODIFIER LE CONTENU TEXTE
+     - Tout le texte du site est en français et peut être édité directement dans l'HTML.
+     - Cherchez les titres de sections ("Nos services", "Pourquoi Digiflexa", etc.).
+
+  6) CONTACT / FORMULAIRE
+     - Le bouton WhatsApp ouvre une conversation pré-remplie.
+     - Le bouton "Envoyer par e-mail" ouvre votre client e-mail (mailto). Pas de serveur requis.
+
+  7) ASTUCE
+     - Recherchez "TODO:" dans ce fichier pour voir rapidement quoi ajuster.
+
+  Bonne réussite ! 🚀 — Zidane & l'équipe Digiflexa
+  -->
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container py-2">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+        <!-- LOGO (OPTIONNEL) -->
+        <img src="logo.png" alt="Digiflexa" height="26">
+         <span class="...">Digiflexa</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-3
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Packs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="btn btn-primary" id="navWhatsApp" href="#" target="_blank"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero border-bottom">
+    <div class="container py-5 py-lg-6">
+      <div class="row align-items-center g-5 py-4">
+        <div class="col-12 col-lg-6">
+          <span class="badge rounded-pill mb-3">Agence digitale • Bénin & Afrique</span>
+          <h1 class="display-5 fw-bold lh-tight mb-3">Transformez vos idées en <span class="text-primary">réalités digitales</span> avec Digiflexa</h1>
+          <p class="lead mb-4">Nous accompagnons Entreprises, Entrepreneurs et Créateurs dans leur succès digital grâce à la création de sites web, d’applications, au marketing en ligne, à l’automatisation WhatsApp et à un support client efficace. Notre approche est rapide, accessible et axée sur les résultats.</p>
+          <div class="d-flex gap-2 flex-wrap">
+            <a id="heroWhatsApp" href="#" class="btn btn-success btn-lg" target="_blank"><i class="bi bi-whatsapp me-2"></i>Parler sur WhatsApp</a>
+            <a href="#pricing" class="btn btn-outline-primary btn-lg">Voir nos packs</a>
+          </div>
+          <div class="text-muted small mt-3"><i class="bi bi-shield-check me-1"></i> Réponse en moins de 24h • Devis gratuit</div>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="card shadow-sm">
+            <div class="card-body p-4">
+              <h3 class="h5 fw-bold mb-3">Automatisation WhatsApp Business</h3>
+              <p class="mb-3">Réponses instantanées, messages programmés, tunnel de vente et intégration CRM. Gagnez du temps, convertissez plus.</p>
+              <ul class="mb-3">
+                <li>Chatbots intelligents adaptés à votre activité</li>
+                <li>Qualifcation des prospects et suivi</li>
+                <li>Scénarios de vente automatisés</li>
+              </ul>
+              <a id="heroWhatsApp2" href="#" class="btn btn-primary"><i class="bi bi-robot me-2"></i>Discuter de votre cas</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Nos services</h2>
+      <p class="text-center text-muted mb-5">Des solutions innovantes, rapides et accessibles pour faire grandir votre activité.</p>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-window fs-4"></i></div>
+              <h3 class="h5">Création de sites web</h3>
+              <p class="text-muted">Site vitrine (WordPress/Wix), boutique E‑commerce (Shopify), maintenance et mises à jour.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-phone fs-4"></i></div>
+              <h3 class="h5">Applications web & mobiles</h3>
+              <p class="text-muted">Applications sur mesure (Android/iOS) et web apps adaptées à vos besoins.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-graph-up fs-4"></i></div>
+              <h3 class="h5">Marketing digital & branding</h3>
+              <p class="text-muted">Gestion réseaux sociaux, SEO, logos, Bannière youtube, charte graphique et supports visuels.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-robot fs-4"></i></div>
+              <h3 class="h5">Automatisation</h3>
+              <p class="text-muted">Chatbots et WhatsApp Business 100% automatisé. Intégration CRM & e‑mailing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-headset fs-4"></i></div>
+              <h3 class="h5">Support & accompagnement</h3>
+              <p class="text-muted">Service client externalisé, formation et coaching digital, assistance continue.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-dashed border-2">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-stars fs-4"></i></div>
+              <h3 class="h5">Clés en main</h3>
+              <p class="text-muted">Des packs prêts à l'emploi pour lancer vite et bien, avec ou sans abonnement.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POURQUOI NOUS -->
+  <section class="py-5 bg-light border-top border-bottom">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Pourquoi choisir Digiflexa ?</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-lightning-charge"></i></div>
+              <h3 class="h6 fw-bold">Rapide & fiable</h3>
+              <p class="text-muted">Livraison rapide avec une qualité constante, adaptée à vos objectifs.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-people"></i></div>
+              <h3 class="h6 fw-bold">Équipe dédiée</h3>
+              <p class="text-muted">Nous travaillons avec vous, pas seulement pour vous.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-ui-checks"></i></div>
+              <h3 class="h6 fw-bold">Packs flexibles</h3>
+              <p class="text-muted">Abonnement mensuel/annuel ou projet unique, selon votre budget.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <div class="icon-circle mb-3"><i class="bi bi-graph-up-arrow"></i></div>
+              <h3 class="h6 fw-bold">Résultats d'abord</h3>
+              <p class="text-muted">Approche centrée sur la performance et la satisfaction client.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-3">Packs & Tarifs</h2>
+      <p class="text-center text-muted">Choisissez un pack, mensuel ou annuel. Possibilité de sur‑mesure.</p>
+
+      <div class="pricing-toggle my-4">
+        <span class="fw-semibold">Mensuel</span>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="togglePricing">
+        </div>
+        <span class="fw-semibold">Annuel <span class="badge text-bg-success">-15%</span></span>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+              <h3 class="h5">Starter</h3>
+              <p class="text-muted">Pour démarrer vite avec l'essentiel.</p>
+              <div class="price mb-2"><span class="price-value" data-month="49" data-year="499">49€</span><span class="text-muted fs-6"> /mois</span></div>
+              <ul class="mb-4">
+                <li>Site vitrine 1 page</li>
+                <li>Template premium</li>
+                <li>Support e‑mail</li>
+              </ul>
+              <a id="btnStarter" href="#" class="btn btn-outline-primary mt-auto" target="_blank">Commencer sur WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm border-primary border-2">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between">
+                <h3 class="h5">Pro</h3>
+                <span class="badge text-bg-primary">Populaire</span>
+              </div>
+              <p class="text-muted">Idéal pour PME et créateurs en croissance.</p>
+              <div class="price mb-2"><span class="price-value" data-month="99" data-year="999">99€</span><span class="text-muted fs-6"> /mois</span></div>
+              <ul class="mb-4">
+                <li>Site multi‑pages ou boutique</li>
+                <li>Gestion réseaux sociaux</li>
+                <li>Automatisation WhatsApp</li>
+              </ul>
+              <a id="btnPro" href="#" class="btn btn-primary mt-auto" target="_blank">Choisir Pro</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body d-flex flex-column">
+              <h3 class="h5">Business</h3>
+              <p class="text-muted">Solutions avancées et accompagnement.</p>
+              <div class="price mb-2"><span class="price-value" data-month="199" data-year="1990">199€</span><span class="text-muted fs-6"> /mois</span></div>
+              <ul class="mb-4">
+                <li>Dev web/app sur mesure</li>
+                <li>SEO & publicité</li>
+                <li>Support prioritaire</li>
+              </ul>
+              <a id="btnBusiness" href="#" class="btn btn-outline-primary mt-auto" target="_blank">Parler au commercial</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-5 bg-light border-top">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Questions fréquentes</h2>
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q1">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#a1">Quels sont les délais ?</button>
+          </h2>
+          <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Un site vitrine simple peut être prêt en quelques jours. Un e‑commerce ou une app demande plus de temps. Nous vous donnons un planning clair au départ.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q2">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">Avez‑vous des abonnements ?</button>
+          </h2>
+          <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Oui : mensuel ou annuel, avec réduction à l'année. Nous proposons aussi des projets au forfait sans abonnement.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="q3">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">Comment se passe le paiement ?</button>
+          </h2>
+          <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">Virement, mobile money ou carte selon le pays. Facture fournie et contrat si nécessaire.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-12 col-lg-6">
+          <h2 class="section-title mb-3">Contact & Devis</h2>
+          <p class="text-muted">Expliquez‑nous votre besoin. Nous revenons vers vous sous 24h.</p>
+          <form id="contactForm" class="needs-validation" novalidate>
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label">Nom</label>
+                <input type="text" class="form-control" id="name" required>
+                <div class="invalid-feedback">Votre nom est requis.</div>
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Téléphone</label>
+                <input type="tel" class="form-control" id="phone" placeholder="ex: +229..." required>
+                <div class="invalid-feedback">Votre téléphone est requis.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">E‑mail</label>
+                <input type="email" class="form-control" id="email" placeholder="vous@example.com" required>
+                <div class="invalid-feedback">E‑mail invalide.</div>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Votre message</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Décrivez votre projet (site, app, budget, délais…)"></textarea>
+              </div>
+              <div class="col-12 d-flex gap-2 flex-wrap">
+                <a id="btnMailto" href="#" class="btn btn-outline-secondary"><i class="bi bi-envelope me-2"></i>Envoyer par e‑mail</a>
+                <a id="btnWhatsApp" href="#" class="btn btn-success" target="_blank"><i class="bi bi-whatsapp me-2"></i>Envoyer via WhatsApp</a>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 fw-bold mb-3">Support & accompagnement</h3>
+              <p class="text-muted">Service client externalisé, formation et assistance technique continue. Nous restons disponibles après la mise en ligne.</p>
+              <ul class="mb-0">
+                <li>Support WhatsApp & e‑mail</li>
+                <li>Suivi de performance (SEO, réseaux sociaux)</li>
+                <li>Mises à jour planifiées</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ================= Contact Section ================= -->
+<section id="contact" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">Contactez-nous</h2>
+      <p class="text-muted">Une question ? Un projet ? Envoyez-nous un message 👇</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form action="https://formspree.io/f/meozboen" method="POST" class="p-4 rounded shadow bg-white">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nom</label>
+            <input type="text" name="name" id="name" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Envoyer 🚀</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer class="py-4 border-top">
+    <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
+      <div class="text-center text-lg-start">
+        <div class="fw-bold">Digiflexa</div>
+        <div class="text-muted small">© <span id="year"></span> — Tous droits réservés</div>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <a id="footerFacebook" href="#" target="_blank" class="text-decoration-none"><i class="bi bi-facebook me-1"></i> Facebook</a>
+        <a id="footerEmail" href="#" class="text-decoration-none"><i class="bi bi-envelope me-1"></i> E‑mail</a>
+        <a id="footerWhatsApp" href="#" target="_blank" class="text-decoration-none"><i class="bi bi-whatsapp me-1"></i> WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a id="floatWhatsApp" href="#" class="btn btn-success rounded-pill shadow whatsapp-float" target="_blank"><i class="bi bi-whatsapp me-2"></i>Chat</a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ==========================================
+    // TODO: REMPLACEZ CES VALEURS PAR LES VÔTRES
+    // ==========================================
+    const WHATSAPP_NUMBER = '22992550034';           // ex: '22961234567' (sans +)
+    const FACEBOOK_URL    = 'https://www.facebook.com/profile.php?id=61579289859570';
+    const EMAIL           = 'digiflexa0@gmail.com';
+
+    // ==========================================
+    // UTILITAIRES
+    // ==========================================
+    const $ = (sel) => document.querySelector(sel);
+    const enc = encodeURIComponent;
+
+    // Met à jour l'année
+    $('#year').textContent = new Date().getFullYear();
+
+    // Construit des liens dynamiquement
+    const waBase = `https://wa.me/${WHATSAPP_NUMBER}`;
+    const defaultMsg = enc("Bonjour Digiflexa ! J'aimerais parler de mon projet : site/app/marketing/automatisation.");
+
+    // Mettre à jour toutes les ancres WhatsApp / E‑mail / Facebook
+    const setHref = (id, href) => { const el = $(id); if (el) el.setAttribute('href', href); };
+    setHref('#navWhatsApp', `${waBase}?text=${defaultMsg}`);
+    setHref('#heroWhatsApp', `${waBase}?text=${defaultMsg}`);
+    setHref('#heroWhatsApp2', `${waBase}?text=${defaultMsg}`);
+    setHref('#btnStarter', `${waBase}?text=${enc('Je veux le pack Starter.')}`);
+    setHref('#btnPro', `${waBase}?text=${enc('Je veux le pack Pro.')}`);
+    setHref('#btnBusiness', `${waBase}?text=${enc('Je veux le pack Business.')}`);
+    setHref('#btnWhatsApp', `${waBase}?text=${defaultMsg}`);
+    setHref('#footerWhatsApp', `${waBase}?text=${defaultMsg}`);
+    setHref('#floatWhatsApp', `${waBase}?text=${defaultMsg}`);
+    setHref('#footerFacebook', FACEBOOK_URL);
+    setHref('#footerEmail', `mailto:${EMAIL}`);
+
+    // Bouton e‑mail du formulaire
+    const contactMailBtn = $('#btnMailto');
+    if (contactMailBtn) {
+      contactMailBtn.addEventListener('click', () => {
+        const name = $('#name').value.trim();
+        const phone = $('#phone').value.trim();
+        const email = $('#email').value.trim();
+        const msg = $('#message').value.trim();
+        const subject = enc(`Nouveau message de ${name || 'client'}`);
+        const body = enc(`Nom: ${name}\nTéléphone: ${phone}\nE‑mail: ${email}\n\nMessage:\n${msg}`);
+        contactMailBtn.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+      });
+    }
+
+    // Bouton WhatsApp du formulaire
+    const contactWaBtn = $('#btnWhatsApp');
+    if (contactWaBtn) {
+      contactWaBtn.addEventListener('click', () => {
+        const name = $('#name').value.trim();
+        const phone = $('#phone').value.trim();
+        const email = $('#email').value.trim();
+        const msg = $('#message').value.trim();
+        const text = enc(`Bonjour !\nJe suis ${name || 'un client'}\nTéléphone: ${phone}\nE‑mail: ${email}\n\nMon besoin: ${msg || '—'}`);
+        contactWaBtn.href = `${waBase}?text=${text}`;
+      });
+    }
+
+    // Validation bootstrap du formulaire
+    (() => {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+      form.addEventListener('submit', (event) => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    })();
+
+    // Toggle prix mensuel / annuel
+    const toggle = document.getElementById('togglePricing');
+    const values = document.querySelectorAll('.price-value');
+    const unitSpans = document.querySelectorAll('.price + span');
+    const updatePrices = () => {
+      const yearly = toggle.checked;
+      values.forEach(v => {
+        const month = v.getAttribute('data-month');
+        const year  = v.getAttribute('data-year');
+        v.textContent = yearly ? `${year}€` : `${month}€`;
+      });
+      unitSpans.forEach(s => s.textContent = yearly ? ' /an' : ' /mois');
+    };
+    if (toggle){
+      toggle.addEventListener('change', updatePrices);
+      updatePrices();
+    }
+    
+  </script>
+</body>
+</html>
